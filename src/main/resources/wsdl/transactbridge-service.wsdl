@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             name="TransactBridge"
+             targetNamespace="http://www.transactbridge.com"
+             xmlns:flt="http://tempuri.org/cics/WSFault"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://www.transactbridge.com"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/"
+             xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Types Section -->
+    <types>
+        <schema elementFormDefault="unqualified"
+                targetNamespace="http://tempuri.org/cics/WSFault"
+                xmlns="http://www.w3.org/2001/XMLSchema"
+                xmlns:flt="http://tempuri.org/cics/WSFault">
+            <element name="CICSFault" type="string"/>
+        </schema>
+        <schema elementFormDefault="qualified"
+                targetNamespace="http://www.transactbridge.com"
+                xmlns="http://www.w3.org/2001/XMLSchema"
+                xmlns:tns="http://www.transactbridge.com">
+            <element name="BRIDGEOperation">
+                <complexType>
+                    <sequence>
+                        <element name="LS_SRCH_MESSAGE">
+                            <complexType>
+                                <sequence>
+                                    <element name="LS_SRCH_DATA" type="string"/>
+                                </sequence>
+                            </complexType>
+                        </element>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="BRIDGEOperationResponse">
+                <complexType>
+                    <sequence>
+                        <element name="LS_OUTPUT" type="string"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+    </types>
+    <!-- Messages -->
+    <message name="TransactBridgeOperationInput">
+        <part element="tns:BRIDGEOperation" name="parameters"/>
+    </message>
+    <message name="TransactBridgeOperationOutput">
+        <part element="tns:BRIDGEOperationResponse" name="parameters"/>
+    </message>
+    <message name="TransactBridgeOperationFault">
+        <part element="flt:CICSFault" name="parameters"/>
+    </message>
+
+    <!-- PortType -->
+    <portType name="TransactBridge">
+        <operation name="BRIDGEOperation">
+            <input message="tns:TransactBridgeOperationInput"/>
+            <output message="tns:TransactBridgeOperationOutput"/>
+            <fault name="TransactBridgeOperationFault" message="tns:TransactBridgeOperationFault"/>
+        </operation>
+    </portType>
+
+    <!-- Binding -->
+    <binding name="TransactBridgeBinding" type="tns:TransactBridge">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="BRIDGEOperation">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="TransactBridgeOperationFault">
+                <soap:fault name="TransactBridgeOperationFault" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <!-- Service -->
+    <service name="TransactBridge">
+        <port binding="tns:TransactBridgeBinding" name="TransactBridgePort">
+            <documentation>
+                <wsi:Claim conformsTo="https://ws-i.org/profile/basic/1.0"/>
+            </documentation>
+            <soap:address location="http://localhost:2307/ws/TransactBridge"/>
+        </port>
+    </service>
+</definitions>

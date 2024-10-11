@@ -1,0 +1,7 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:web="http://www.example.com/transactbridge">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:TransactionRequest>rtdfuhfgsjfkndkjfdhkjhdgjdkgljdjlkgjdhklfkjlfjdkfhdkfjdlfkdjflkjdfjdhfkjdhflkdjfhjd</web:TransactionRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

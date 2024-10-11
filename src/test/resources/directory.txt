@@ -1,0 +1,31 @@
+transactbridge
+│
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── example
+│   │   │           └── transactbridge
+│   │   │               ├── TransactBridgeApplication.java  // Main Class
+│   │   │               ├── controller                     // Controllers (REST, SOAP)
+│   │   │               │   ├── RestController.java         // REST Endpoint
+│   │   │               │   └── SoapController.java         // SOAP Endpoint
+│   │   │               ├── service                         // Service Layer
+│   │   │               │   ├── MessageService.java         // Service for handling logic
+│   │   │               │   └── KafkaProducerService.java   // Kafka producer logic
+│   │   │               ├── repository                      // Repository (JPA Interfaces)
+│   │   │               │   └── TransactionRepository.java  // JPA Repository for transactions
+│   │   │               ├── model                           // Entities/Models
+│   │   │               │   └── Transaction.java            // Entity class for database mapping
+│   │   │               ├── config                          // Kafka and H2 configurations
+│   │   │                   └── KafkaConfig.java            // Kafka configuration class
+│   │   │
+│   │   └── resources
+│   │       ├── application.properties                      // App configuration (H2, Kafka, etc.)
+│   │       ├── wsdl                                         // WSDL files for SOAP
+│   │       │   └── transactBridge.wsdl
+│   │       └── data.sql                                     // Initial data for H2
+│   └── test
+│       └── java
+│           └── com.example.transactbridge
+│               └── TransactBridgeApplicationTests.java      // Test cases
