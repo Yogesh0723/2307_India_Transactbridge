@@ -1,11 +1,15 @@
 package com.example.transactbridge.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 
 @Data
-@Builder
+@Builder(toBuilder = true) // Allow building from an existing instance
+@NoArgsConstructor // This will generate a default constructor
+@AllArgsConstructor // This will generate a constructor with all fields
 @Entity
 @Table(name = "students", uniqueConstraints = @UniqueConstraint(columnNames = {"uniqueKey"}))
 public class Student {
@@ -27,7 +31,10 @@ public class Student {
 
     @PrePersist
     @PreUpdate
-    private void prepareUniqueKey() {
-        this.uniqueKey = studentFirstName + studentLastName + studentRollNumber;
+    public void prepareUniqueKey() {
+        // Ensure uniqueKey is generated from non-null values
+        this.uniqueKey = (studentFirstName != null ? studentFirstName : "") +
+                (studentLastName != null ? studentLastName : "") +
+                (studentRollNumber != null ? studentRollNumber : "");
     }
 }
