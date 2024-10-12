@@ -113,6 +113,28 @@
 			<artifactId>spring-kafka-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Bean Validation API -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>2.0.1.Final</version> <!-- Use the latest version -->
+		</dependency>
+
+		<!-- Hibernate Validator (the reference implementation of the Bean Validation API) -->
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.1.5.Final</version> <!-- Use the latest version -->
+		</dependency>
+
+		<!-- Optional: If you are using Spring Boot, you may already have this -->
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.el</artifactId>
+			<version>3.0.0</version> <!-- Required for expression language support -->
+		</dependency>
+
 	</dependencies>
 
 	<!-- Build section with Maven plugin configuration -->
