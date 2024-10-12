@@ -77,6 +77,28 @@ To insert a student record via SOAP, you would send a SOAP request similar to th
 </soapenv:Envelope>
 ```
 
+#### REST API Example
+
+To insert a student record via REST, you can use the following JSON body:
+````
+{
+"studentTitle": "Mr.",
+"studentFirstName": "John",
+"studentSecondName": "Doe",
+"studentLastName": "Doe",
+"studentRollNumber": "11",
+"studentObtainedMarks": "85",
+"totalMarks": "100",
+"transactionType": "I"
+}
+````
+To authenticate and obtain a JWT token, you can use the following JSON body:
+````
+{
+"username": "your_username",
+"password": "your_password"
+}
+````
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a pull request or open an issue for any suggestions or improvements.
