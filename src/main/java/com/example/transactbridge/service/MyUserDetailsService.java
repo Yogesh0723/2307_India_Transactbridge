@@ -15,7 +15,6 @@ public class MyUserDetailsService implements UserDetailsService {
     private static final Map<String, String> users = new HashMap<>();
 
     static {
-        // Add a sample user (username: "user", password: "password")
         users.put("user", "password");
     }
 
